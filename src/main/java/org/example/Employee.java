@@ -7,38 +7,42 @@ public class Employee {
     private String fullName;
     private String email;
     private String password;
-    private String[] healthplans;
+    private String[] healthPlans;
 
-    public Employee(int id, String fullName, String email, String password, String[] healthplans) {
+    public Employee(int id, String fullName, String email, String password, String[] healthPlans) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
         this.password = password;
-        this.healthplans = healthplans;
+        this.healthPlans = healthPlans;
     }
 
-    public void addHealthplan(int index, String name) {
-        try {
-            if (healthplans[index] == null) {
-                healthplans[index] = name;
-                System.out.println(name + " başarıyla eklendi.");
-            } else {
-                System.out.println("İlgili index (" + index + ") zaten dolu.");
-            }
-        } catch (ArrayIndexOutOfBoundsException e) {
+    public void addHealthPlan(int index, String name) {
+        if (index < 0 || index >= healthPlans.length) {
             System.out.println("Hata: Geçersiz index " + index);
+        } else {
+            if (healthPlans[index] == null) {
+                healthPlans[index] = name;
+            } else {
+                System.out.println("Index " + index + " dolu, atama yapılamadı.");
+            }
         }
     }
 
-    // Getter & Setters...
+    // Getters & Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     public String getFullName() { return fullName; }
     public void setFullName(String fullName) { this.fullName = fullName; }
-    public String[] getHealthplans() { return healthplans; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+    public String[] getHealthPlans() { return healthPlans; }
+    public void setHealthPlans(String[] healthPlans) { this.healthPlans = healthPlans; }
 
     @Override
     public String toString() {
-        return "Employee{id=" + id + ", name='" + fullName + "', email='" + email + "', plans=" + Arrays.toString(healthplans) + "}";
+        return "Employee{id=" + id + ", name='" + fullName + "', healthPlans=" + Arrays.toString(healthPlans) + "}";
     }
 }

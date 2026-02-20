@@ -13,7 +13,6 @@ public class Healthplan {
         this.plan = plan;
     }
 
-    // Getter & Setter
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     public String getName() { return name; }
@@ -23,6 +22,6 @@ public class Healthplan {
 
     @Override
     public String toString() {
-        return "Healthplan{id=" + id + ", name='" + name + "', plan=" + plan.getName() + ", price=" + plan.getPrice() + "}";
+        return "Healthplan{id=" + id + ", name='" + name + "', plan=" + plan + "}";
     }
 }

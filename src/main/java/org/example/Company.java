@@ -11,26 +11,33 @@ public class Company {
     public Company(int id, String name, double giro, String[] developerNames) {
         this.id = id;
         this.name = name;
-        setGiro(giro); // Negatif kontrolü için setter kullanıldı
+        setGiro(giro);
         this.developerNames = developerNames;
     }
 
     public void addEmployee(int index, String name) {
-        try {
+        if (index < 0 || index >= developerNames.length) {
+            System.out.println("Hata: Geçersiz index " + index);
+        } else {
             if (developerNames[index] == null) {
                 developerNames[index] = name;
             } else {
-                System.out.println("Index " + index + " dolu, atama yapılamadı.");
+                System.out.println("Index " + index + " dolu.");
             }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Hata: " + index + " dizin sınırları dışında.");
         }
     }
 
-    public double getGiro() { return giro; }
     public void setGiro(double giro) {
-        this.giro = Math.max(giro, 0); // 0'dan küçükse 0 yapar
+        this.giro = Math.max(giro, 0); // Negatifse 0 yapar
     }
+
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public double getGiro() { return giro; }
+    public String[] getDeveloperNames() { return developerNames; }
+    public void setDeveloperNames(String[] developerNames) { this.developerNames = developerNames; }
 
     @Override
     public String toString() {
